@@ -3,8 +3,8 @@ package main
 import (
 	"fmt"
 
-	"github.com/crueber/twitter-pruner/pruner"
 	"github.com/dghubble/go-twitter/twitter"
+	"github.com/scottmcmaster/twitter-pruner/pruner"
 )
 
 // Verify gets User baseline data.

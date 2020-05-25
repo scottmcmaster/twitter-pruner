@@ -4,8 +4,8 @@ import (
 	"fmt"
 	"time"
 
-	"github.com/crueber/twitter-pruner/pruner"
 	"github.com/dghubble/go-twitter/twitter"
+	"github.com/scottmcmaster/twitter-pruner/pruner"
 )
 
 func whichTweetsToUnfavorite(tweets []twitter.Tweet, env *pruner.Env) []int64 {

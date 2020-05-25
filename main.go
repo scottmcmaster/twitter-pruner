@@ -8,9 +8,10 @@ import (
 	"runtime"
 	"strings"
 
-	"github.com/crueber/twitter-pruner/pruner"
+	"github.com/davecgh/go-spew/spew"
 	"github.com/dghubble/go-twitter/twitter"
 	"github.com/mkideal/cli"
+	"github.com/scottmcmaster/twitter-pruner/pruner"
 )
 
 // Pruner is for each of the pruning functions
@@ -23,6 +24,10 @@ func main() {
 		if err != nil {
 			fmt.Printf("%+v\n", err)
 			os.Exit(1)
+		}
+
+		if client.Env.Verbose {
+			spew.Dump(client.Env)
 		}
 
 		user, err := Verify(client)

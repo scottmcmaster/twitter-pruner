@@ -27,6 +27,7 @@ type Env struct {
 	MaxTweetsPerRequest int       `cli:"request" usage:"number of tweets per request" dft:"100"`
 	MaxAge              time.Time `cli:"age" usage:"specific date that overrides days duration"`
 	Verbose             bool      `cli:"v,verbose" usage:"increased verbosity" dft:"false"`
+	SaveToFile          bool      `cli:"s,savetofile" usage:"save deleted tweets to file" dft:"false"`
 }
 
 // GenerateClient builds a twitter client that can be used to make calls
