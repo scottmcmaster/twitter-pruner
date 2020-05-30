@@ -2,3 +2,4 @@ CREDS.md
 .vscode
 build
 twitter_pruner_*.json
+__debug_bin

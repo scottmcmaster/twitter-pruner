@@ -1,6 +1,7 @@
 package pruner
 
 import (
+	"os"
 	"strconv"
 	"time"
 
@@ -28,6 +29,23 @@ type Env struct {
 	MaxAge              time.Time `cli:"age" usage:"specific date that overrides days duration"`
 	Verbose             bool      `cli:"v,verbose" usage:"increased verbosity" dft:"false"`
 	SaveToFile          bool      `cli:"s,savetofile" usage:"save deleted tweets to file" dft:"false"`
+}
+
+// Validate implements cli.Validator interface
+func (te *Env) Validate(ctx *cli.Context) error {
+	if te.ConsumerKey == "env" {
+		te.ConsumerKey = os.Getenv("TWITTER_API_CONSUMER_KEY")
+	}
+	if te.ConsumerSecret == "env" {
+		te.ConsumerSecret = os.Getenv("TWITTER_API_CONSUMER_SECRET")
+	}
+	if te.AccessToken == "env" {
+		te.AccessToken = os.Getenv("TWITTER_API_ACCESS_TOKEN")
+	}
+	if te.AccessTokenSecret == "env" {
+		te.AccessTokenSecret = os.Getenv("TWITTER_API_ACCESS_TOKEN_SECRET")
+	}
+	return nil
 }
 
 // GenerateClient builds a twitter client that can be used to make calls
